@@ -11,3 +11,8 @@ dependencies = ["requests", "beautifulsoup4", "windows-toasts", "rich"]
 
 [project.scripts]
 xp-paused = "xp_paused:main"
+
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
