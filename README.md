@@ -1,5 +1,5 @@
 # XP-Paused
-Dead simple script that notifies you when the [OSRS](https://osrs.game) are back online after an Update
+Dead simple script that notifies you when the [OSRS](https://osrs.game) servers are back online after an update
 
 ## Usage
 Run `XP-Paused` when you notice the servers are offline
