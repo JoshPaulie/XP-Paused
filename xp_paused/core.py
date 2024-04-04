@@ -48,7 +48,7 @@ def is_offline(soup: BeautifulSoup) -> bool:
     return False
 
 
-def main():
+def stalk_servers():
     first_check = True
 
     # Windows Notification
@@ -78,5 +78,3 @@ def main():
     toaster.show_toast(servers_online_toast)
 
 
-if __name__ == "__main__":
-    main()
