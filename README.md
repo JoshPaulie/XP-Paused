@@ -8,7 +8,7 @@ You'll be notified when they're back online via a Windows push notification[^1]
 
 ## Install
 ```
-pipx install git+https://github.com/JoshPaulie/osrs-server-watcher.git
+pipx install git+https://github.com/JoshPaulie/XP-Paused.git
 ```
 
 ### Update
