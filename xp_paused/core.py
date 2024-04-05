@@ -50,6 +50,7 @@ def is_offline(soup: BeautifulSoup) -> bool:
 
 def stalk_servers():
     first_check = True
+    start_time = dt.datetime.now()
 
     # Windows Notification
     toaster = WindowsToaster("python")
@@ -73,8 +74,15 @@ def stalk_servers():
         print("The servers are already [green]online[/]!")
         sys.exit()
 
-    # Send notification and end program
+    # Determine script elapsed time
+    servers_online_time = dt.datetime.now()
+    xp_paused_elapsed_time = servers_online_time - start_time
+    runtime_message = f"Script runtime: {xp_paused_elapsed_time.seconds // 60} minutes"
+    servers_online_toast.text_fields.append(runtime_message)
+
+    # Send notification, final print statements
     print(f"[{dt.datetime.now().strftime("%I:%M %p")}] Servers are back [green]online[/]!\a")
+    print(runtime_message)
     toaster.show_toast(servers_online_toast)
 
 
