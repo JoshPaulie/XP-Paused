@@ -6,11 +6,6 @@ Run `XP-Paused` when you notice the servers are offline
 
 You'll be notified when they're back online via a **Windows** push notification[^1]
 
-After installing via pipx, run the following
-```
-XP-Paused.exe
-```
-
 ## Install
 > [!Important]
 > Requires [Python](https://www.python.org/downloads/windows/) 3.12+ & [pipx](https://github.com/pypa/pipx?tab=readme-ov-file#on-windows)
