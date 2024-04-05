@@ -7,7 +7,12 @@ name = "XP-Paused"
 version = "1.0"
 requires-python = ">= 3.12"
 
-dependencies = ["requests", "beautifulsoup4", "windows-toasts", "rich"]
+dependencies = [
+    "requests==2.31.0",
+    "beautifulsoup4==4.12.3",
+    "windows-toasts==1.1.0; os_name == 'nt'",
+    "rich==13.7.1",
+]
 
 classifiers = ["Programming Language :: Python :: 3.12"]
 
