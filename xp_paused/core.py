@@ -16,6 +16,8 @@ if os.name == "nt":
     # trying to install on other OS will cause import error
     from windows_toasts import Toast, WindowsToaster
 
+if os.name == "posix" and sys.platform != "darwin":
+    import notify_send_installed_check
 
 status_page_url = "https://secure.runescape.com/m=news/game-status-information-centre?oldschool=1"
 
@@ -85,9 +87,12 @@ def send_servers_online_notification(elapsed_time_message: str):
                 ["notify-send", "-t", "2500", servers_online_message, go_earn_xp_message],
                 check=True,
             )
-        except:
+        except FileNotFoundError:
+            pass
+        except Exception as ex:
+            console.print(f"An unknown error occurred sending a linux notification: [red]{ex}[/]")
             console.print(
-                "An error occurred sending a linux notification. Likely, the package [blue]notify-send[/] is not installed"
+                "Please consider filing an [link=https://github.com/JoshPaulie/XP-Paused/issues]issue[/link]."
             )
             console.print(elapsed_time_message)
 
