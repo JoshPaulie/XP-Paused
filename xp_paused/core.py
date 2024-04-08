@@ -1,5 +1,6 @@
 import datetime as dt
 import os
+import subprocess
 import sys
 import time
 import webbrowser
@@ -7,19 +8,14 @@ import webbrowser
 import requests
 from bs4 import BeautifulSoup
 from console import console
+from macos_notification import macos_notification
 from rich.panel import Panel
 
 if os.name == "nt":
+    # Dependency is only installed on Windows
+    # trying to install on other OS will cause import error
     from windows_toasts import Toast, WindowsToaster
 
-if sys.platform == "darwin":
-    mac_notice = "\n".join(
-        [
-            "Sadly, MacOS notifications and Python don't play nice.",
-            "If you'd like to continue using the app, be sure bell notifications are enabled in your terminal",
-        ]
-    )
-    console.print(Panel.fit(mac_notice, title="[yellow]Notice"))
 
 status_page_url = "https://secure.runescape.com/m=news/game-status-information-centre?oldschool=1"
 
@@ -66,26 +62,34 @@ def is_offline(soup: BeautifulSoup) -> bool:
 
 
 def send_servers_online_notification(elapsed_time_message: str):
-    notification_title = "OldSchool Servers are online!"
-    notification_body = "Go earn some xp!"
+    servers_online_message = "OldSchool Servers are online!"
+    go_earn_xp_message = "Go earn some xp!"
 
     # Windows Notification
     if os.name == "nt":
         toaster = WindowsToaster("python")
         servers_online_toast = Toast()
-        servers_online_toast.text_fields = [notification_title, notification_body]
+        servers_online_toast.text_fields = [servers_online_message, go_earn_xp_message]
         servers_online_toast.text_fields.append(elapsed_time_message)
         toaster.show_toast(servers_online_toast)
+        return
 
+    # MacOS notification
     if sys.platform == "darwin":
-        # Bit of a bigger visual notification for MacOS
-        # + 3 bells
-        console.print(Panel.fit(notification_title, subtitle=f"[green]{notification_body}", padding=(1, 1)))
-        for _ in range(3):
-            console.bell()
-            time.sleep(1)
+        macos_notification(elapsed_time_message, title=servers_online_message, subtitle=go_earn_xp_message)
+        return
 
-    # TODO: Add linux support
+    if os.name == "posix":
+        try:
+            subprocess.run(
+                ["notify-send", "-t", "2500", servers_online_message, go_earn_xp_message],
+                check=True,
+            )
+        except:
+            console.print(
+                "An error occurred sending a linux notification. Likely, the package [blue]notify-send[/] is not installed"
+            )
+            console.print(elapsed_time_message)
 
 
 def stalk_servers():
