@@ -1,4 +1,7 @@
-# When imported, this module informs the user if they don't have notify-send installed
+"""
+When imported, this module informs the user if they don't have notify-send installed
+"""
+
 import subprocess
 
 from .console import console

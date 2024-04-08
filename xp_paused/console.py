@@ -1,4 +1,7 @@
-"""Mac user disclaimer requires a console, which must be imported early for this use case"""
+"""
+Simple subclassed version of the rich console, with a custom prefix.
+`Console.log()` doesn't have any way to customize the prefix, afaik
+"""
 
 import datetime as dt
 
