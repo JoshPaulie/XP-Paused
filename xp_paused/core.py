@@ -105,7 +105,7 @@ def stalk_servers():
             break
 
         first_check = False
-        console.print(f"[{dt.datetime.now().strftime('%I:%M %p')}] Servers are [red]offline[/].. ")
+        console.print(f"Servers are [red]offline[/].. ")
         time.sleep(90)
 
     if first_check:
@@ -118,5 +118,5 @@ def stalk_servers():
     elapsed_time_message = f"Script runtime: {xp_paused_elapsed_time.seconds // 60} minutes"
 
     # Send notification
-    console.print(f"[{dt.datetime.now().strftime('%I:%M %p')}] Servers are back [green]online[/]!\a")
+    console.print(f"Servers are back [green]online[/]!\a")
     send_servers_online_notification(elapsed_time_message)
