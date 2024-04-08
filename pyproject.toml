@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "XP-Paused"
-version = "1.0"
+dynamic = ["version"]
 requires-python = ">= 3.12"
 
 dependencies = [
@@ -19,3 +19,6 @@ classifiers = ["Programming Language :: Python :: 3.12"]
 
 [project.scripts]
 xp-paused = "xp_paused.core:stalk_servers"
+
+[tool.hatch.version]
+path = "xp_paused/__about__.py"
