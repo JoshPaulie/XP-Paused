@@ -8,7 +8,7 @@ You'll be notified when they're back online via a push notification (supports Wi
 
 ## Install
 > [!Important]
-> Requires [Python](https://www.python.org/downloads/windows/) 3.12+ & [pipx](https://github.com/pypa/pipx?tab=readme-ov-file#on-windows)
+> Requires [Python](https://www.python.org/downloads/) 3.12+ & [pipx](https://github.com/pypa/pipx)
 
 ```
 pipx install git+https://github.com/JoshPaulie/XP-Paused.git
