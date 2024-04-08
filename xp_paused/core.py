@@ -7,9 +7,9 @@ import webbrowser
 
 import requests
 from bs4 import BeautifulSoup
-from console import console
-from macos_notification import macos_notification
-from rich.panel import Panel
+
+from .console import console
+from .macos_notification import macos_notification
 
 if os.name == "nt":
     # Dependency is only installed on Windows
