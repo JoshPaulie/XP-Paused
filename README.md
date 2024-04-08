@@ -4,7 +4,7 @@ Dead simple script that notifies you when the [OSRS](https://osrs.game) servers 
 ## Usage
 Run `XP-Paused` when you notice the servers are offline
 
-You'll be notified when they're back online via a **Windows** push notification[^1]
+You'll be notified when they're back online via a push notification (supports Windows, MacOS, and Linux[^1])
 
 ## Install
 > [!Important]
@@ -19,4 +19,4 @@ pipx install git+https://github.com/JoshPaulie/XP-Paused.git
 pipx upgrade XP-Paused
 ```
 
-[^1]: Only supports Windows at the moment
+[^1]: [notify-send](https://man.archlinux.org/man/notify-send.1.en) must be installed for Linux support 🐧
