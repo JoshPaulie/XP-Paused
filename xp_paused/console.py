@@ -9,14 +9,13 @@ from rich.console import Console
 
 
 class PrintPrefixConsole(Console):
-    def __init__(self, print_prefix: str = ">", **kwargs):
-        self.print_prefix = print_prefix
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def print(self, *objects, sep=" ", end="\n", **kwargs):
-        objects = (self.print_prefix + str(obj) for obj in objects)
+        timestamp = f"[bright_white][{dt.datetime.now().strftime('%I:%M %p')}][/] "
+        objects = (timestamp + str(obj) for obj in objects)
         super().print(*objects, sep=sep, end=end, **kwargs)
 
 
 console = PrintPrefixConsole()
-console.print_prefix = f"[bright_white][{dt.datetime.now().strftime('%I:%M %p')}][/] "
